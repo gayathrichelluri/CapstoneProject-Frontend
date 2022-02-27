@@ -1,0 +1,26 @@
+.header {
+    background-color: purple !important;
+    height: 70px !important;
+    padding: 11px;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+}
+
+.title-block {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    color: white;
+    align-items: center;
+}
+
+.logo-image {
+    background-color: #ff7f7f;
+    height: 35px;
+}
+
+.auth-block {
+    display: flex;
+    align-items: center;
+}
