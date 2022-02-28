@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './Login.css';
 import {FormControl, FormHelperText, InputLabel, Input, Button} from "@material-ui/core";
+import {validateEmail} from "../../util/validation";
 
 const Login = ({onLogin}) => {
     const [email, setEmail] = useState('')
@@ -8,14 +9,6 @@ const Login = ({onLogin}) => {
     const [password, setPassword] = useState('')
     const [reqPassword, setReqPassword] = useState('no-helper')
     const [message, setMessage] = useState('');
-
-    const validateEmail = (email) => {
-        return String(email)
-            .toLowerCase()
-            .match(
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            );
-    };
 
     const onEmailChange = (e) => {
         const value = e.target.value
