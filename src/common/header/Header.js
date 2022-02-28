@@ -5,17 +5,44 @@ import Modal from "../Modal/Modal";
 import {AppBar, Button, Typography} from "@material-ui/core";
 import Login from "../../screens/login/Login";
 import Register from "../../screens/register/Register";
+import {login, logout} from "../../api/auth";
+import {useNavigate} from "react-router-dom";
 
 const Header = () => {
+    const navigate = useNavigate();
     const [loggedIn, setLoggedIn] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
     const onLoginClick = () => {
-        loggedIn ? setLoggedIn(!loggedIn) : setShowModal(true);
+        loggedIn ? onLogout() : setShowModal(true);
     }
 
     const closeModal = () => {
         setShowModal(false);
+    }
+
+    const onLogin = async (email, password, bookShowId) => {
+        const response = await login({path: '/login', accessToken: `Basic ${window.btoa(`${email}:${password}`)}`})
+        if(response && response.statusText === 'OK') {
+            sessionStorage.setItem('uuid', response.data.id);
+            sessionStorage.setItem('access-token', response.data.accessToken);
+            setLoggedIn(true);
+            setShowModal(false);
+        } else {
+            throw(response);
+        }
+    }
+
+    const onLogout = async () => {
+        const response = await logout({path: '/logout', accessToken: sessionStorage.getItem('access-token')});
+        if(response && response.statusText === 'OK') {
+            sessionStorage.removeItem('uuid');
+            sessionStorage.removeItem('access-token');
+            setLoggedIn(false);
+            navigate('/');
+        } else {
+            throw(response);
+        }
     }
 
     return (
@@ -43,7 +70,7 @@ const Header = () => {
                     title={'Authentication'}
                     tabs={['Login', 'Register']}
                     tabActions={{
-                        Login: <Login/>,
+                        Login: <Login onLogin={onLogin}/>,
                         Register: <Register/>
                     }}
                 />
