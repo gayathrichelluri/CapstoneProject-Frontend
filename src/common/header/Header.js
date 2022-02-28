@@ -3,6 +3,8 @@ import './Header.css';
 import logo from '../../assets/logo.jpeg';
 import Modal from "../Modal/Modal";
 import {AppBar, Button, Typography} from "@material-ui/core";
+import Login from "../../screens/login/Login";
+import Register from "../../screens/register/Register";
 
 const Header = () => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -39,6 +41,11 @@ const Header = () => {
                     open={showModal}
                     close={closeModal}
                     title={'Authentication'}
+                    tabs={['Login', 'Register']}
+                    tabActions={{
+                        Login: <Login/>,
+                        Register: <Register/>
+                    }}
                 />
             }
         </>

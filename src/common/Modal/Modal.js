@@ -15,15 +15,12 @@ const customStyles = {
     },
 };
 
-export const Modal = ({open, close, title}) => {
-    const [tab, setTab] = useState(0);
+export const Modal = ({open, close, title, tabs, tabActions}) => {
+    const [tab, setTab] = useState({value: 0, action: tabActions[tabs[0]]});
 
-    const onTabChange = () => {
-        tab ? setTab(0): setTab(1);
+    const onTabChange = (event, value) => {
+        setTab({value, action: tabActions[tabs[value]]})
     }
-
-    //hard-coded -- TODO: should change
-    const tabs = ['login', 'register'];
 
     return (
         <ReactModal
@@ -36,7 +33,7 @@ export const Modal = ({open, close, title}) => {
             <AppBar className={"modal-header"} position={"sticky"}>{title}</AppBar>
             <div className={"modal-tabs"}>
                 <Tabs
-                    value={tab}
+                    value={tab.value}
                     onChange={onTabChange}
                     indicatorColor="primary"
                     variant="fullWidth"
@@ -50,8 +47,7 @@ export const Modal = ({open, close, title}) => {
                     {tabs.map((tab, idx) => <Tab key={idx} label={tab} /> )}
                 </Tabs>
             </div>
-            {/* TODO: should change to login form and register form */}
-            {tabs[tab]}
+            {tabActions[tabs[tab.value]]}
         </ReactModal>
     );
 }
