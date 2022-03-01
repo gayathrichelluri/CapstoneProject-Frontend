@@ -1,17 +1,30 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
-import PropTypes from "prop-types";
+import React, {useState} from "react";
+import {Tab, Tabs} from "@material-ui/core";
 
-const TabContainer = function (props) {
+const TabContainer = ({tabs, tabIndicatorColor, setAction}) => {
+  const [tab, setTab] = useState(0);
+
+  const onTabChange = (event, value) => {
+      setTab(value);
+      setAction(tabs[value])
+  }
+
   return (
-    <Typography component="div" style={{ padding: 0, textAlign: "center" }}>
-      {props.children}
-    </Typography>
-  );
-};
+      <Tabs
+          value={tab}
+          onChange={onTabChange}
+          indicatorColor="primary"
+          variant="fullWidth"
+          TabIndicatorProps={{
+            style: {
+              backgroundColor: tabIndicatorColor,
+            }
+          }}
 
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
+      >
+        {tabs.map((tab, idx) => <Tab key={idx} label={tab} /> )}
+      </Tabs>
+  );
 };
 
 export default TabContainer;

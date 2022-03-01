@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './Header.css';
 import logo from '../../assets/logo.jpeg';
-import Modal from "../Modal/Modal";
+import Modal from "../modal/Modal";
 import {AppBar, Button, Typography} from "@material-ui/core";
 import Login from "../../screens/login/Login";
 import Register from "../../screens/register/Register";

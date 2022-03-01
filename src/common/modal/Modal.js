@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {AppBar, Tab, Tabs} from "@material-ui/core";
+import {AppBar} from "@material-ui/core";
 import ReactModal from 'react-modal';
 import './Modal.css';
+import TabContainer from "../tabContainer/TabContainer";
 
 const customStyles = {
     content: {
@@ -16,10 +17,10 @@ const customStyles = {
 };
 
 export const Modal = ({open, close, title, tabs, tabActions}) => {
-    const [tab, setTab] = useState({value: 0, action: tabActions[tabs[0]]});
+    const [action, setAction] = useState(tabActions[tabs[0]]);
 
-    const onTabChange = (event, value) => {
-        setTab({value, action: tabActions[tabs[value]]})
+    const setTabAction = (e) => {
+       setAction(tabActions[e]);
     }
 
     return (
@@ -32,22 +33,13 @@ export const Modal = ({open, close, title, tabs, tabActions}) => {
         >
             <AppBar className={"modal-header"} position={"sticky"}>{title}</AppBar>
             <div className={"modal-tabs"}>
-                <Tabs
-                    value={tab.value}
-                    onChange={onTabChange}
-                    indicatorColor="primary"
-                    variant="fullWidth"
-                    TabIndicatorProps={{
-                        style: {
-                            backgroundColor: 'red',
-                        }
-                    }}
-
-                >
-                    {tabs.map((tab, idx) => <Tab key={idx} label={tab} /> )}
-                </Tabs>
+               <TabContainer
+                   tabs={tabs}
+                   setAction={setTabAction}
+                   tabIndicatorColor={'red'}
+               />
             </div>
-            {tabActions[tabs[tab.value]]}
+            {action}
         </ReactModal>
     );
 }
