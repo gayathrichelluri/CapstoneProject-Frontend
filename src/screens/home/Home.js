@@ -10,7 +10,7 @@ const Home = () => {
         Appointments: <Appointment/>
     }
 
-    const [action, setAction] = useState(tabs[0]);
+    const [action, setAction] = useState(tabActions[tabs[0]]);
     const setTabAction = (e) => {
         setAction(tabActions[e]);
     }

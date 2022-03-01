@@ -1,0 +1,12 @@
+.doctor-list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.select-form {
+    width: 20% !important;
+    margin: 20px 0 !important;
+    align-self: center;
+}
