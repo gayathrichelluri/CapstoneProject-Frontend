@@ -1,7 +1,17 @@
 import React from 'react';
 
 const Appointment = () => {
-    return (<div>Appointment list!!!</div>)
+    const isLoggedIn = !!sessionStorage.getItem('access-token');
+    return (
+        <>
+            {isLoggedIn
+                ? <div>
+                    Appointments list!!!
+                </div>
+                : <div> Login to see appointments </div>
+            }
+        </>
+    );
 }
 
 export default Appointment;

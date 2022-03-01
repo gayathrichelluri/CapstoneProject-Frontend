@@ -10,7 +10,7 @@ import {useNavigate} from "react-router-dom";
 
 const Header = () => {
     const navigate = useNavigate();
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(!!sessionStorage.getItem('access-token'));
     const [showModal, setShowModal] = useState(false);
 
     const onLoginClick = () => {
@@ -21,7 +21,7 @@ const Header = () => {
         setShowModal(false);
     }
 
-    const onLogin = async (email, password, bookShowId) => {
+    const onLogin = async (email, password) => {
         const response = await login({path: '/login', accessToken: `Basic ${window.btoa(`${email}:${password}`)}`})
         if(response && response.statusText === 'OK') {
             sessionStorage.setItem('uuid', response.data.id);
