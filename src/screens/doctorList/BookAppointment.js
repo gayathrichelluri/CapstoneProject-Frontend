@@ -63,7 +63,7 @@ const BookAppointment = ({open, close, doctor}) => {
                 ));
             }
         })();
-    }, []);
+    }, [date, doctor.id]);
 
     const onBookingSubmit = async () => {
         if(timeslot === 'None') {

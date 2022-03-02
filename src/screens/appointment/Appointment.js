@@ -17,7 +17,7 @@ const Appointment = () => {
                 accessToken
             }));
         })();
-    }, [])
+    }, [accessToken])
 
     const onRateAppointmentClick = (appointment) => {
         setAction(<RateAppointment open={true} close={closeModal} appointment={appointment}/>)
@@ -33,8 +33,8 @@ const Appointment = () => {
             {!!accessToken ?
                 <div>
                     <div className={'appointments-list'}>
-                        {appointments.length &&
-                        appointments.map((appointment, idx) =>
+                        {!appointments.length ? <div className={'appointment-login-msg'}>No appointments!</div> :
+                            appointments.map((appointment, idx) =>
                             <Paper className={'appointment-item'} key={idx}>
                                 <Typography variant={'body1'}>{`Dr: ${appointment.doctorName}`}</Typography>
                                 <Typography variant={'body2'}>{`Date: ${appointment.appointmentDate}`}</Typography>
@@ -49,8 +49,7 @@ const Appointment = () => {
                                     <Typography variant={'caption'}>Rate Appointment</Typography>
                                 </Button>
                             </Paper>
-                        )
-                        }
+                        )}
                     </div>
                     {showModal && action}
                 </div>

@@ -1,3 +1,9 @@
+.doctor-list-msg {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
 .doctor-list-container {
     display: flex;
     flex-direction: column;

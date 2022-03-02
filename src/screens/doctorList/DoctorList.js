@@ -53,7 +53,7 @@ const DoctorList = () => {
 
     return (
         <>
-            {!doctors.length ? <div>Loading!</div> : (
+            {!doctors.length ? <div className={'doctor-list-msg'}>Loading...</div> : (
                 <div className={'doctor-list-container'}>
                     <FormControl variant="filled" className={'select-form'}>
                         <InputLabel variant="standard" htmlFor="uncontrolled-native">
