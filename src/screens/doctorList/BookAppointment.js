@@ -39,11 +39,20 @@ const BookAppointment = ({open, close, doctor}) => {
     const [doctorTimeslots, setDoctorTimeslots] = useState([]);
     const [user, setUser] = useState('');
 
+    const formattedDate = (d) => {
+        let month = d.getMonth() + 1;
+        let date = d.getDate();
+        if(month > 0 && month < 10) month = '0' + month;
+        if(date > 0 && date < 10) date = '0' + date;
+
+        return `${d.getFullYear()}-${month}-${date}`
+    }
+
     useEffect(() => {
         (async () => {
             setDoctorTimeslots(await getDoctorTimeslots(
                 doctor.id,
-                `${date.getYear()}-${date.getMonth()+1}-${date.getDate()}`
+                formattedDate(date)
             ));
             if(!sessionStorage.getItem('access-token'))
                 setMessage('Please login to book an appointment!');
@@ -70,7 +79,7 @@ const BookAppointment = ({open, close, doctor}) => {
                 userName: user.firstName,
                 userEmailId: user.emailId,
                 timeSlot: timeslot,
-                appointmentDate: `${date.getYear()}-${date.getMonth()+1}-${date.getDate()}`,
+                appointmentDate: formattedDate(date),
                 status: 'Open',
                 symptoms: symptoms,
                 priorMedicalHistory: medicalHistory === '' ? 'NA' : medicalHistory
