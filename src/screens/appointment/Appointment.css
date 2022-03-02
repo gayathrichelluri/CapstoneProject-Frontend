@@ -1,0 +1,16 @@
+.appointment-login-msg {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
+.appointment-item {
+    text-align: left;
+    margin: 15px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.rate-appointment {
+    margin-top: 20px !important;
+}

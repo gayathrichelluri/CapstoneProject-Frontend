@@ -88,7 +88,7 @@ const BookAppointment = ({open, close, doctor}) => {
             shouldCloseOnOverlayClick={true}
             style={customStyles}
         >
-            <AppBar className={"modal-header"} position={"sticky"}>Book an Appointment</AppBar>
+            <AppBar className={"booking-modal-header"} position={"sticky"}>Book an Appointment</AppBar>
             <div className='booking-form'>
                 <div className='booking-form-fields'>
                     {/*Doctor Name*/}

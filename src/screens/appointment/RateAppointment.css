@@ -1,4 +1,4 @@
-.details-modal-header {
+.rating-modal-header {
     height: 70px;
     background-color: purple !important;
     display: flex;
@@ -7,14 +7,14 @@
     padding: 10px;
 }
 
-.doctor-details {
+.rate-appointment-form {
     display: flex;
     flex-direction: column;
-    row-gap: 5px;
-    padding: 15px;
+    padding: 11px;
+    width: 30%;
+    row-gap: 15px;
 }
 
-.doctor-rating {
-    display: flex;
-    flex-direction: row;
+.rating-submit {
+    margin-top: 10px !important;
 }

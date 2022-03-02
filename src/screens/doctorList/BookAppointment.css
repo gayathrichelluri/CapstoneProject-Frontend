@@ -1,3 +1,12 @@
+.booking-modal-header {
+    height: 70px;
+    background-color: purple !important;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    padding: 10px;
+}
+
 .booking-form {
     margin: 20px 10px 10px;
 }

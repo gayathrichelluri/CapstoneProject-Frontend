@@ -23,3 +23,15 @@ export const getUser = async(id, accessToken) => {
         throw e;
     }
 }
+
+export const getUserAppointments = async ({id, accessToken}) => {
+    try {
+        return (await axios.get(`${baseUrl}/${id}/appointments`, {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            },
+        })).data;
+    } catch (e) {
+        return e;
+    }
+}

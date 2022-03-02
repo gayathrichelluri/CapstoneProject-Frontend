@@ -28,7 +28,7 @@ const DoctorDetails = ({open, close, doctor}) => {
             shouldCloseOnOverlayClick={true}
             style={customStyles}
         >
-            <AppBar className={"modal-header"} position={"sticky"}>Doctor Details</AppBar>
+            <AppBar className={"details-modal-header"} position={"sticky"}>Doctor Details</AppBar>
             <div className={'doctor-details'}>
                 <Typography variant={'body1'}>{`Dr: ${doctor.firstName} ${doctor.lastName}`}</Typography>
                 <Typography variant={'body2'}>{`Total Experience: ${doctor.totalYearsOfExp} years`}</Typography>
