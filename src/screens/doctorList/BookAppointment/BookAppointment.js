@@ -13,9 +13,9 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import './BookAppointment.css';
-import {getDoctorTimeslots} from "../../api/doctors";
-import {postAppointments} from "../../api/appointment";
-import {getUser} from "../../api/users";
+import {getDoctorTimeslots} from "../../../api/doctors";
+import {postAppointments} from "../../../api/appointment";
+import {getUser} from "../../../api/users";
 
 const customStyles = {
     content: {

@@ -3,7 +3,7 @@ import {AppBar, Button, FormControl, FormLabel, TextField, Typography} from "@ma
 import ReactModal from "react-modal";
 import {Rating} from "@material-ui/lab";
 import './RateAppointment.css';
-import {postRating} from "../../api/ratings";
+import {postRating} from "../../../api/ratings";
 
 const customStyles = {
     content: {

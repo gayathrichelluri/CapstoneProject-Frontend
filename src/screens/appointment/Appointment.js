@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './Appointment.css';
 import {getUserAppointments} from "../../api/users";
 import {Button, Paper, Typography} from "@material-ui/core";
-import RateAppointment from "./RateAppointment";
+import RateAppointment from "./RateAppointment/RateAppointment";
 
 const Appointment = () => {
     const accessToken = sessionStorage.getItem('access-token');

@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {getDoctors, getSpecialities} from "../../api/doctors";
 import {FormControl, InputLabel, NativeSelect} from "@material-ui/core";
 import './DoctorList.css';
-import DoctorItem from "./DoctorItem";
-import BookAppointment from "./BookAppointment";
-import DoctorDetails from "./DoctorDetails";
+import DoctorItem from "./DoctorItem/DoctorItem";
+import BookAppointment from "./BookAppointment/BookAppointment";
+import DoctorDetails from "./DoctorDetails/DoctorDetails";
 
 const DoctorList = () => {
     const [doctors, setDoctors] = useState([]);
