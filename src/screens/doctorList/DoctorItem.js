@@ -24,7 +24,7 @@ const DoctorItem = ({doctor, bookAppointmentClick, viewDetailsClick}) => {
                 <Button
                     className={'button-view-details'}
                     variant={"contained"}
-                    onClick={viewDetailsClick}
+                    onClick={() => viewDetailsClick(doctor)}
                 >
                     <Typography variant={'caption'}>View Details</Typography>
                 </Button>

@@ -1,0 +1,11 @@
+.doctor-details {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    padding: 15px;
+}
+
+.doctor-rating {
+    display: flex;
+    flex-direction: row;
+}

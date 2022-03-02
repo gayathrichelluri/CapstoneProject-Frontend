@@ -4,6 +4,7 @@ import {FormControl, InputLabel, NativeSelect} from "@material-ui/core";
 import './DoctorList.css';
 import DoctorItem from "./DoctorItem";
 import BookAppointment from "./BookAppointment";
+import DoctorDetails from "./DoctorDetails";
 
 const DoctorList = () => {
     const [doctors, setDoctors] = useState([]);
@@ -38,8 +39,16 @@ const DoctorList = () => {
         });
     }
 
-    const onViewDetailsClick = () => {
-        console.log('To show doctor details!');
+    const onViewDetailsClick = (doctor) => {
+        setShowModal({
+            open: true,
+            render:
+                <DoctorDetails
+                    open={showModal.open}
+                    close={closeModal}
+                    doctor={doctor}
+                />
+        });
     }
 
     return (
