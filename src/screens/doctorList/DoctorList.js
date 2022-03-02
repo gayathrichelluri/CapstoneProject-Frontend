@@ -3,11 +3,13 @@ import {getDoctors, getSpecialities} from "../../api/doctors";
 import {FormControl, InputLabel, NativeSelect} from "@material-ui/core";
 import './DoctorList.css';
 import DoctorItem from "./DoctorItem";
+import BookAppointment from "./BookAppointment";
 
 const DoctorList = () => {
     const [doctors, setDoctors] = useState([]);
     const [specialities, setSpecialities] = useState([]);
     const [selectedSpeciality, setSelectedSpeciality] = useState('');
+    const [showModal, setShowModal] = useState({open: false, render: <></>});
     useEffect(() => {
         (async () => {
             setDoctors(await getDoctors({param: selectedSpeciality}));
@@ -19,6 +21,26 @@ const DoctorList = () => {
             setSpecialities(await getSpecialities());
         })();
     }, [])
+
+    const closeModal = () => {
+        setShowModal({open: false, render: <></>});
+    }
+
+    const onBookAppointmentClick = (doctor) => {
+        setShowModal({
+            open: true,
+            render:
+                <BookAppointment
+                    open={showModal.open}
+                    close={closeModal}
+                    doctor={doctor}
+                />
+        });
+    }
+
+    const onViewDetailsClick = () => {
+        console.log('To show doctor details!');
+    }
 
     return (
         <>
@@ -48,11 +70,14 @@ const DoctorList = () => {
                             <DoctorItem
                                 doctor={doctor}
                                 key={idx}
+                                bookAppointmentClick={onBookAppointmentClick}
+                                viewDetailsClick={onViewDetailsClick}
                             />
                         )
                     })}
                 </div>
             )}
+            {showModal.open && showModal.render}
         </>
     );
 }

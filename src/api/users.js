@@ -10,3 +10,16 @@ export const register = async ({path, data}) => {
         throw e;
     }
 }
+
+export const getUser = async(id, accessToken) => {
+    try {
+        return (await axios.get(`${baseUrl}/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            },
+        })).data;
+    } catch (e) {
+        console.log(e);
+        throw e;
+    }
+}

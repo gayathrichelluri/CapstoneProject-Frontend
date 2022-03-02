@@ -1,0 +1,18 @@
+.booking-form {
+    margin: 20px 10px 10px;
+}
+
+.booking-form-fields {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    width: 40%;
+}
+
+.booking-submit {
+    margin-top: 15px !important;
+}
+
+.message {
+    color: red;
+}

@@ -3,7 +3,7 @@ import {Button, Paper, Typography} from "@material-ui/core";
 import './DoctorItem.css'
 import {Rating} from "@material-ui/lab";
 
-const DoctorItem = ({doctor}) => {
+const DoctorItem = ({doctor, bookAppointmentClick, viewDetailsClick}) => {
     return (
         <Paper className={'doctor-item'}>
             <Typography variant={'body1'} style={{marginBottom: '15px'}}>{`Doctor Name : ${doctor.firstName} ${doctor.lastName}`}</Typography>
@@ -17,14 +17,14 @@ const DoctorItem = ({doctor}) => {
                     className={'button-book-appointment'}
                     variant={"contained"}
                     color={"primary"}
-                    onClick={() => {}}
+                    onClick={() => bookAppointmentClick(doctor)}
                 >
                     <Typography variant={'caption'}>Book Appointment</Typography>
                 </Button>
                 <Button
                     className={'button-view-details'}
                     variant={"contained"}
-                    onClick={() => {}}
+                    onClick={viewDetailsClick}
                 >
                     <Typography variant={'caption'}>View Details</Typography>
                 </Button>

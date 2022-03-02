@@ -20,3 +20,13 @@ export const getSpecialities = async () => {
         throw e;
     }
 }
+
+export const getDoctorTimeslots = async (id, date) => {
+    try {
+        const response = await axios.get(`${baseUrl}/${id}/timeSlots?date=${date}`);
+        return response.data.timeSlot;
+    } catch (e) {
+        console.log(e);
+        throw e;
+    }
+}
